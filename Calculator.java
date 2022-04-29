@@ -1,6 +1,7 @@
 package task1;
 
 import javax.swing.JOptionPane;
+import java.io.*;
 
 public class Calculator {
 
@@ -32,7 +33,8 @@ public class Calculator {
 		Double input1 = null;
 		Double input2 = null;
 		String operation = null;
-	
+		PrintWriter pw;
+		String fullSum;
 		
 		// == get the first number ==
 		// keep requesting input until it's valid (can be parsed into a double)
@@ -91,23 +93,52 @@ public class Calculator {
 			} 
 		}
 		
-		// === main logic to call a calculation method ===
-		switch (operation) {
-			case "+" -> JOptionPane.showMessageDialog(null, input1 + " + " + input2 + " = " 
-						+ addition(input1, input2));
-
-			case "-" -> JOptionPane.showMessageDialog(null, input1 + " - " + input2 + " = " 
-						+ subtraction(input1, input2));
+		// === try block for writing to file	
+		try {
+			// create writer object and file and add true argument to write on a new line
+			pw = new PrintWriter(new FileWriter("output.txt", true));
 			
-			case "*" -> JOptionPane.showMessageDialog(null, input1 + " * " + input2 + " = " 
-						+ multiply(input1, input2));
 			
-			case "/" -> JOptionPane.showMessageDialog(null, input1 + " / " + input2 + " = " 
-						+ divide(input1, input2));
+			// === main logic to call corresponding calculation method ===
+			if (operation.equals("+")) {
+				// store sum in a variable to display to user and write to file
+				fullSum = input1 + " + " + input2 + " = " + addition(input1, input2);
+				
+				JOptionPane.showMessageDialog(null, fullSum);
+				pw.write(fullSum + "\r\n");
+			}
+			else if (operation.equals("-")) {
+				fullSum = input1 + " - " + input2 + " = " + subtraction(input1, input2);
+				
+				JOptionPane.showMessageDialog(null, fullSum);
+				pw.write(fullSum + "\r\n");
+				
+			}
+			else if (operation.equals("*")) {
+				fullSum = input1 + " * " + input2 + " = " + multiply(input1, input2);
+				
+				JOptionPane.showMessageDialog(null, fullSum);
+				pw.write(fullSum + "\r\n");
+			}
 			
-			default -> JOptionPane.showMessageDialog(null, "Please try again");
+			else if (operation.equals("/")) {
+				fullSum = input1 + " / " + input2 + " = " + divide(input1, input2);
+				
+				JOptionPane.showMessageDialog(null, fullSum);
+				pw.write(fullSum + "\r\n");
+			}
+			
+			// display error message if something goes wrong
+			else {
+				JOptionPane.showMessageDialog(null, "Please try again");
+			}
+			
+			// close the file object
+			pw.close();
 		}
-		
+		// display error message and trace back if there's an exception
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Error writing to file");
+		}
 	}
-
 }
