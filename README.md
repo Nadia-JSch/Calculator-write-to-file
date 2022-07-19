@@ -15,3 +15,11 @@ It's an exercise in defensive programming, writing to a text file and using the 
 ![input message](https://github.com/Nadia-JSch/Calculator-write-to-file/blob/49337d6ed212067f4e05c9b392c40842743a943d/screenshots/input%20message.png)
 ![answer message](https://github.com/Nadia-JSch/Calculator-write-to-file/blob/49337d6ed212067f4e05c9b392c40842743a943d/screenshots/answer%20message.png)
 ![validation messaage](https://github.com/Nadia-JSch/Calculator-write-to-file/blob/49337d6ed212067f4e05c9b392c40842743a943d/screenshots/message%20validation.png)
+
+## Author
+
+Nadia Schmidtke [Email me](https://nadia-jsch.github.io/Nadia-Schmidtke-Webpages/Contact.html)
+
+## License
+
+This project is licensed under the [GNU GENERAL PUBLIC LICENSE](https://github.com/Nadia-JSch/PoisePMS/blob/master/license).
